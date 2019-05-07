@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1120px;
+}
+
+#main-page {
+    background: url('../images/background.jpg');
+    width: 100vw;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+/* Container */
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+header #logo a {
+    color: #fff200;
+    text-decoration: none;
+    font-size: 55px;
+    transition: 0.1s ease-in-out;
+}
+
+header #logo a:hover {
+    color: #fff200;
+}
+
+header nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+header nav a {
+    font-size: 16px;
+    margin-left: 40px;
+    text-decoration: none;
+    color: #fff200;
+    position: relative;
+    transform: perspective(1px) translateZ(0);  
+}
+
+header nav a:hover {
+    cursor: pointer;
+}
+
+header nav a::before {
+    content: "";
+    position: absolute;
+    left: 100%;
+    right: 0;
+    bottom: -5px;
+    background: #fff200;
+    height: 1px;
+    transition: 0.3s ease-in-out;
+}
+
+header nav a:hover::before {
+    left: 0;
+    cursor: pointer;
+}
+/* End Header */
+/* End Container */
+
+/* Components */
+/* Information */
+#information {
+    position: fixed;
+    width: 30vw;
+    background: rgba(255, 255, 255, 0.6);
+    left: 35vw;
+    top: 25vh;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: #3d3d3d;
+    opacity: 0;
+    transition: 0.2s ease-in-out;
+}
+
+#information p {
+    margin-bottom: 10px;
+}
+
+#information p:first-child {
+    font-size: 30px;
+    color: #2c3e50;
+}
+
+#information p:nth-child(2) {
+    font-size: 20px;
+    color: #7f8c8d;
+}
+
+#information div {
+    padding-top: 5px;
+    padding-left: 25%;
+}
+
+#information li {
+    list-style: none;
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #34495e;
+}
+/* End Information */
+
+/* Contact */
+#contact {
+    position: absolute;
+    bottom: 35px;
+    right: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+#contact button {
+    background: transparent;
+    padding: 12px 15px;
+    border-radius: 50%;
+    border: #fff200 solid 2px;
+    color: #fff200;
+    font-size: 20px;
+    margin-bottom: 20px;
+    transition: 0.2s ease-in-out;
+}
+
+#contact button:hover {
+    cursor: pointer;
+    background: #fff200;
+    color: #000000;
+}
+/* End Components */
+
+/* Fonts */
+.f-sofia {
+    font-family: 'Sofia', cursive;
+}
+
+.f-montserrat {
+    font-family: 'Montserrat', sans-serif;
+}
