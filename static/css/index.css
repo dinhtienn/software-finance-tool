@@ -31,14 +31,15 @@ header {
 }
 
 header #logo a {
-    color: #fff200;
+    color: #c7ecee;
     text-decoration: none;
     font-size: 55px;
     transition: 0.1s ease-in-out;
 }
 
 header #logo a:hover {
-    color: #fff200;
+    cursor: pointer;
+    color: #b2d4d6;
 }
 
 header nav {
@@ -51,7 +52,7 @@ header nav a {
     font-size: 16px;
     margin-left: 40px;
     text-decoration: none;
-    color: #fff200;
+    color: #c7ecee;
     position: relative;
     transform: perspective(1px) translateZ(0);  
 }
@@ -66,7 +67,7 @@ header nav a::before {
     left: 100%;
     right: 0;
     bottom: -5px;
-    background: #fff200;
+    background: #c7ecee;
     height: 1px;
     transition: 0.3s ease-in-out;
 }
@@ -79,21 +80,42 @@ header nav a:hover::before {
 /* End Container */
 
 /* Components */
-/* Information */
-#information {
+
+/* Tutorial */
+.frame {
     position: fixed;
     width: 30vw;
     background: rgba(255, 255, 255, 0.6);
     left: 35vw;
-    top: 25vh;
+    top: 30vh;
     padding: 50px;
-    border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    color: #3d3d3d;
+    color: #7f8c8d;
     opacity: 0;
-    transition: 0.2s ease-in-out;
+    font-size: 20px;
+    transition: 0.5s ease-in-out;
 }
 
+#tutorial {
+    padding-bottom: 30px;
+}
+
+#tutorial p, #tutorial i {
+    margin-bottom: 10px;
+}
+
+#tutorial ul {
+    margin-bottom: 25px;
+}
+
+#tutorial ul li {
+    font-size: 14px;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+/* End Tutorial */
+
+/* Information */
 #information p {
     margin-bottom: 10px;
 }
@@ -101,11 +123,6 @@ header nav a:hover::before {
 #information p:first-child {
     font-size: 30px;
     color: #2c3e50;
-}
-
-#information p:nth-child(2) {
-    font-size: 20px;
-    color: #7f8c8d;
 }
 
 #information div {
@@ -119,6 +136,23 @@ header nav a:hover::before {
     margin-bottom: 5px;
     color: #34495e;
 }
+
+#information i {
+    margin-right: 8px;
+    color: #2c3e50;
+}
+
+#information p:first-child i {
+    font-size: 25px;
+}
+
+#information p:last-child i {
+    font-size: 18px;
+}
+
+#information ul i {
+    font-size: 16px;
+}
 /* End Information */
 
 /* Contact */
@@ -130,21 +164,40 @@ header nav a:hover::before {
     flex-direction: column;
 }
 
-#contact button {
+#contact a {
     background: transparent;
     padding: 12px 15px;
     border-radius: 50%;
-    border: #fff200 solid 2px;
-    color: #fff200;
+    border: #c7ecee solid 2px;
+    color: #c7ecee;
     font-size: 20px;
     margin-bottom: 20px;
     transition: 0.2s ease-in-out;
+    text-decoration: none;
 }
 
-#contact button:hover {
+#contact a:hover {
     cursor: pointer;
-    background: #fff200;
+    background: #c7ecee;
     color: #000000;
+}
+
+#contact::before {
+    content: 'Github';
+    font-size: 12px;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 5px;
+    position: absolute;
+    border-radius: 5px;
+    top: -25px;
+    transition: 0.4s ease-in-out;
+    opacity: 0;
+}
+
+#contact:hover::before {
+    opacity: 1;
+    top: -35px;
 }
 /* End Components */
 
