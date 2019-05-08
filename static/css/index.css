@@ -30,8 +30,12 @@ header {
     padding: 10px 0;
 }
 
+#logo {
+    padding-top: 20px;
+}
+
 header #logo a {
-    color: #c7ecee;
+    color: #ffffff;
     text-decoration: none;
     font-size: 55px;
     transition: 0.1s ease-in-out;
@@ -39,7 +43,7 @@ header #logo a {
 
 header #logo a:hover {
     cursor: pointer;
-    color: #b2d4d6;
+    color: #d0d0d0;
 }
 
 header nav {
@@ -52,7 +56,7 @@ header nav a {
     font-size: 16px;
     margin-left: 40px;
     text-decoration: none;
-    color: #c7ecee;
+    color: #ffffff;
     position: relative;
     transform: perspective(1px) translateZ(0);  
 }
@@ -67,7 +71,7 @@ header nav a::before {
     left: 100%;
     right: 0;
     bottom: -5px;
-    background: #c7ecee;
+    background: #ffffff;
     height: 1px;
     transition: 0.3s ease-in-out;
 }
@@ -294,8 +298,8 @@ header nav a:hover::before {
     background: transparent;
     padding: 12px 15px;
     border-radius: 50%;
-    border: #c7ecee solid 2px;
-    color: #c7ecee;
+    border: #ffffff solid 2px;
+    color: #ffffff;
     font-size: 20px;
     margin-bottom: 20px;
     transition: 0.2s ease-in-out;
@@ -304,7 +308,7 @@ header nav a:hover::before {
 
 #contact a:hover {
     cursor: pointer;
-    background: #c7ecee;
+    background: #ffffff;
     color: #000000;
 }
 
@@ -334,4 +338,13 @@ header nav a:hover::before {
 
 .f-montserrat {
     font-family: 'Montserrat', sans-serif;
+}
+
+@font-face {
+    font-family: Lombok;
+    src: url('../fonts/Lombok.otf');
+}
+
+.f-lombok {
+    font-family: 'Lombok', cursive;
 }
