@@ -94,7 +94,24 @@ header nav a:hover::before {
     justify-content: center;
     align-items: center;
     margin: 0 15%;
+    flex-direction: column;
 }
+
+/* Heading */
+#heading-container {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    height: 5%;
+}
+
+h1 {
+    font-size: 1.4vw;
+    color: #ffffff;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+    text-align: center;
+}
+/* End Heading */
 
 /* Start Button */
 #start-button {
@@ -151,6 +168,7 @@ header nav a:hover::before {
     border: #2c3e50 solid 1px;
     padding: 8px 15px;
     transition: 0.3s ease-in-out;
+    margin-right: 20px;
 }
 
 .button-submit:hover {
@@ -206,10 +224,134 @@ header nav a:hover::before {
     padding-top: 30px;
 }
 
+#message1-container {
+    width: 100%;
+}
+
+#message1 {
+    font-size: 14px;
+    color: #2c3e50;
+}
+
 #next1 {
     margin-right: 20px;
 }
 /* End Input1 */
+
+/* Input2 */
+#input2-container {
+    z-index: 3;
+    display: none;
+    opacity: 0;
+    transition: 0.5s ease-in-out;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #d0d0d0;
+    overflow: hidden;
+}
+
+td input {
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    box-sizing: border-box;
+    border: none;
+    background: transparent;
+    text-align: center;
+    font-size: 15px;
+    color: #2c3e50;
+}
+
+th {
+    font-size: 16px;
+    color: #2c3e50;
+    font-weight: lighter;
+    padding: 10px 0;
+    text-align: center;
+}
+
+td {
+    color: #2c3e50;
+    font-size: 15px;
+    text-align: center;
+}
+
+table p {
+    padding: 10px 0;
+}
+
+#message2-container {
+    width: 35vw;
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin-top: 20px;
+    padding: 10px;
+    display: none;
+}
+
+#message2 {
+    font-size: 14px;
+    color: #2c3e50;
+}
+
+#button2 {
+    padding-top: 20px;
+    width: 40vw;
+    padding-left: 7.5%;
+}
+
+#next2, #back2 {
+    border: #ffffff solid 1px;
+    color: #ffffff;
+}
+
+#next2:hover, #back2:hover {
+    background: #ffffff;
+    color: #2c3e50;
+}
+/* End Input2 */
+
+/* Result */
+#result-container {
+    z-index: 4;
+    display: none;
+    opacity: 0;
+    transition: 0.5s ease-in-out;
+}
+
+#main-result {
+    display: flex;
+    justify-content: space-between;
+    width: 25vw;
+}
+
+#result li {
+    list-style: none;
+    position: relative;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+#key i {
+    margin-right: 10px;
+}
+
+#value i {
+    position: absolute;
+    left: -3vw;
+    top: 3px;
+}
+
+#button3 {
+    width: 100%;
+    padding-left: 26px;
+}
+/* End Result */
 
 /* Tutorial */
 .frame {
@@ -329,11 +471,16 @@ header nav a:hover::before {
     opacity: 1;
     top: -35px;
 }
+/* End Contact */
 /* End Components */
 
 /* Fonts */
 .f-sofia {
     font-family: 'Sofia', cursive;
+}
+
+.f-roboto {
+    font-family: 'Roboto Mono', monospace;
 }
 
 .f-montserrat {
@@ -347,4 +494,154 @@ header nav a:hover::before {
 
 .f-lombok {
     font-family: 'Lombok', cursive;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    /* Heading */
+    h1 {
+        font-size: 3.5vw;
+    }
+    /* End Heading */
+
+    /* Contact */
+    #contact {
+        right: 3.5vw;
+    }
+    /* End Contact */
+
+    /* Header */
+    header {
+        padding: 10px;
+    }
+
+    header #logo {
+        padding-top: 10px;
+    }
+
+    header #logo a {
+        font-size: 8vw;
+    }
+
+    header nav a {
+        font-size: 3.5vw; 
+        margin-left: 20px;
+    }
+    /* End Header */
+
+    /* Start Button */
+    #start-button {
+        font-size: 6vw;
+        padding: 10px 20px;
+        transition: 0.4s ease-in-out;
+    }
+    
+    #start-button i {
+        margin-right: 5px;
+    }
+    /* End Start Button */
+
+    /* Tutorial */
+    .frame {
+        width: 60vw;
+        left: 14vw;
+        top: 20vh;
+        padding: 30px;
+    }
+
+    #tutorial {
+        padding-bottom: 15px;
+    }
+
+    #tutorial p, #tutorial i {
+        margin-bottom: 10px;
+    }
+
+    #tutorial ul {
+        margin-bottom: 25px;
+    }
+
+    #tutorial ul li {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+    /* End Tutorial */
+
+    /* Information */
+    #information p {
+        margin-bottom: 10px;
+        font-size: 3vw;
+    }
+
+    #information p:first-child {
+        font-size: 4vw;
+    }
+
+    #information div {
+        padding-left: 10%;
+    }
+
+    #information li {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+    #information p i {
+        font-size: 3vw;
+    }
+
+    #information p:first-child i {
+        font-size: 4.5vw;
+    }
+
+    #information ul i {
+        font-size: 3.5vw;
+    }
+    /* End Information */
+
+    /* Input1 */
+    .main-content {
+        width: 60vw;
+        padding: 30px;
+        margin-top: -12vh;
+    }
+
+    .button-submit {
+        font-size: 17px;
+        padding: 8px 15px;
+        margin-right: 20px;
+    }
+    /* End Input1 */
+
+    /* Input2 */
+    #button2 {
+        width: 50vw;
+    }
+    /* End Input2 */
+
+    /* Result */
+    #result {
+        width: 70vw;
+    }
+
+    #main-result {
+        width: 100%;
+    }
+
+    #result li {
+        font-size: 3.5vw;
+        margin-bottom: 15px;
+    }
+
+    #value i {
+        left: -5vw;
+        top: 3px;
+    }
+    /* End Result */
+
+    /* Message2 */
+    #message2-container {
+        width: 70vw;
+    }
+    /* End Message2 */
 }

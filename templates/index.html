@@ -7,8 +7,7 @@
     
     <link rel="shortcut icon" type="image/x-icon" href="../static/images/favicon.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat|Sofia" rel="stylesheet">
-    <link rel="stylesheet" href="../static/css/index.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto+Mono|Sofia" rel="stylesheet">    <link rel="stylesheet" href="../static/css/index.css">
     <title>Product Finance Tool | Solution to calculating finance </title>
 </head>
 <body>
@@ -41,14 +40,15 @@
         <div id="input1-container" class="between-screen">
             <div id="input1" class="main-content">
                 <div class="input-box">
-                    <input type="text">
-                    <label for="">Number of periods</label>
+                    <input type="text" class="input1">
+                    <label class="label1">Number of periods</label>
                 </div>
                 <div class="input-box">
-                    <input type="text">
-                    <label for="">Rate (in %)</label>
+                    <input type="text" class="input1">
+                    <label class="label1">Rate (in %)</label>
                 </div>
-                <div>
+                <div id="message1-container"><p id="message1"></p></div>
+                <div id="button1">
                     <button id="next1" class="button-submit">
                         Next
                     </button>
@@ -59,6 +59,106 @@
             </div>
         </div>
         <!-- End Input1 -->
+
+        <!-- Input2 -->
+        <div id="input2-container" class="between-screen">
+            <table id="input2" class="main-content">
+                <thead>
+                    <tr>
+                        <th>Period in Months</th>
+                        <th>Benefit (USD)</th>
+                        <th>Cost (USD)</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                    <tr>
+                        <td>1</td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="message2-container"><p id="message2"></p></div>
+            <div id="button2">
+                <button id="next2" class="button-submit">
+                    Next
+                </button>
+                <button id="back2" class="button-submit">
+                    Back
+                </button>
+            </div>
+        </div>
+        <!-- End Input2 -->
+
+        <!-- Result -->
+        <div id="result-container" class="between-screen">
+            <div id="result" class="main-content">
+                <div id="main-result">
+                    <ul id="key">
+                        <li><i class="far fa-hand-point-right"></i>Present value (PV)</li>
+                        <li><i class="far fa-hand-point-right"></i>Furture Worth (FW)</li>
+                        <li><i class="far fa-hand-point-right"></i>Net Present Value (NPV)</li>
+                        <li><i class="far fa-hand-point-right"></i>Net Future Value (NFV)</li>
+                        <li><i class="far fa-hand-point-right"></i>Internal Rate of Return (IRR)</li>
+                        <li><i class="far fa-hand-point-right"></i>Payback period (PP)</li>
+                        <li><i class="far fa-hand-point-right"></i>Return on Investment (ROI)</li>
+                    </ul>
+                    <ul id="value">
+                        <li><i class="fas fa-long-arrow-alt-right"></i>abc</li>
+                        <li><i class="fas fa-long-arrow-alt-right"></i>abc</li>
+                        <li><i class="fas fa-long-arrow-alt-right"></i>abc</li>
+                        <li><i class="fas fa-long-arrow-alt-right"></i>abc</li>
+                        <li><i class="fas fa-long-arrow-alt-right"></i>abc</li>
+                        <li><i class="fas fa-long-arrow-alt-right"></i>abc</li>
+                        <li><i class="fas fa-long-arrow-alt-right"></i>abc</li>
+                    </ul>
+                </div>
+                <div id="button3">
+                    <button id="back3" class="button-submit">
+                        Back
+                    </button>
+                    <button id="back" class="button-submit">
+                        Start
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- End Result -->
 
         <!-- Tutorial -->
         <div id="tutorial" class="frame">
@@ -106,6 +206,10 @@
             <a href="https://github.com/dinhtienn/" target="_blank"><i class="fab fa-github"></i></a>
         </div>
         <!-- End Contact -->
+
+        <div id="heading-container">
+            <h1 class="f-roboto">Calculating 7 Finance values of your Product</h1>
+        </div>
         <!-- End Components -->
     </div>
     <script src="../static/js/index.js"></script>
