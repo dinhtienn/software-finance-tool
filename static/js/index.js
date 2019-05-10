@@ -25,6 +25,7 @@ if (document.querySelector('#start-button')) {
     var message2 = document.querySelector('#message2');
     var listInput1 = document.getElementsByClassName('input1');
     var listLabel1 = document.getElementsByClassName('label1');
+    var listInput2;
     for (let i = 0; i < listInput1.length; i++) {
         listInput1[i].onchange = function() {
             if (listInput1[i].value != '') {
@@ -66,12 +67,13 @@ if (document.querySelector('#start-button')) {
                 tableHTML = tableHTML.concat(`
                     <tr>
                         <td>${ i + 1 }</td>
-                        <td><input type="text"></td>
-                        <td><input type="text"></td>
+                        <td><input type="text" class="input2"></td>
+                        <td><input type="text" class="input2"></td>
                     </tr>
                 `);
             }
             table.innerHTML = tableHTML;
+            listInput2 = document.getElementsByClassName('input2');
         } else {
             displayMessage(message, message1);
         }
@@ -81,8 +83,14 @@ if (document.querySelector('#start-button')) {
         displayComponent = display(input1, listComponent, 'flex');
     }
 
+    // process
     next2.onclick = function() {
-        displayComponent = display(result, listComponent, 'flex');
+        if (validateInput2(listInput2)) {
+            
+            displayComponent = display(result, listComponent, 'flex');
+        } else {
+            displayMessage('Benefit and Cost must be positive number!', message2);
+        }
     }
 
     back3.onclick = function() {
@@ -189,14 +197,27 @@ if (document.querySelector('#start-button')) {
         return message;
     }
 
-    function validateInput2(input2) {
-        
+    function validateInput2(listInput2) {
+        for (let i = 0; i < listInput2.length; i++) {
+            if (isNaN(Number(listInput2[i].value))) {
+                return false;
+            } else if(listInput2[i].value == '') {
+                return false;
+            }
+        }
+        return true;
     }
 
     function displayMessage(message, obj) {
         obj.innerHTML = message;
+        if (obj == message2) {
+            document.querySelector('#message2-container').style.display = 'block';
+        }
         setTimeout(function() {
             obj.innerHTML = '';
+            if (obj == message2) {
+                document.querySelector('#message2-container').style.display = 'none';
+            }
         }, 5000);
     }
 }
