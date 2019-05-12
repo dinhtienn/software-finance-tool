@@ -9,6 +9,7 @@ if (document.querySelector('#start-button')) {
     var back2 = document.querySelector('#back2');
     var back3 = document.querySelector('#back3');
     var start = document.querySelector('#back');
+    var resultValue = document.querySelector('#value');
 
     var period;
     var rate;
@@ -59,7 +60,7 @@ if (document.querySelector('#start-button')) {
         var message = validateInput1(listInput1);
         if (message == true) {
             period = Number(listInput1[0].value);
-            rate = Number(listInput1[1].value);
+            rate = Number(listInput1[1].value) / 100;
             displayComponent = display(input2, listComponent, 'flex');
             var table = document.querySelector('#table-body');
             var tableHTML = '';
@@ -67,8 +68,8 @@ if (document.querySelector('#start-button')) {
                 tableHTML = tableHTML.concat(`
                     <tr>
                         <td>${ i + 1 }</td>
-                        <td><input type="text" class="input2"></td>
-                        <td><input type="text" class="input2"></td>
+                        <td><input type="text" class="input2 benefit"></td>
+                        <td><input type="text" class="input2 cost"></td>
                     </tr>
                 `);
             }
@@ -83,11 +84,31 @@ if (document.querySelector('#start-button')) {
         displayComponent = display(input1, listComponent, 'flex');
     }
 
-    // process
     next2.onclick = function() {
         if (validateInput2(listInput2)) {
-            
+            var listBenefitDom = document.getElementsByClassName('benefit');
+            var listCostDom = document.getElementsByClassName('cost');
+            var listBenefit = listValue(listBenefitDom);
+            var listCost = listValue(listCostDom);
+            var listCashFlow = findListCashFlow(listBenefit, listCost);
+
+            var pv = PV(period, rate, listBenefit[0], listCost[0]);
+            var fw = FW(pv, period, rate);
+            var npv = NPV(period, rate, listCashFlow);
+            var nfv = NFV(npv, period, rate);
+            var irr = IRR(period, rate, listCashFlow);
+            var pp = PP(listCashFlow, listCost, period);
+            var roi = ROI(listCashFlow, listCost);
             displayComponent = display(result, listComponent, 'flex');
+            resultValue.innerHTML = `
+                <li><i class="fas fa-long-arrow-alt-right"></i>${ pv }</li>
+                <li><i class="fas fa-long-arrow-alt-right"></i>${ fw }</li>
+                <li><i class="fas fa-long-arrow-alt-right"></i>${ npv }</li>
+                <li><i class="fas fa-long-arrow-alt-right"></i>${ nfv }</li>
+                <li><i class="fas fa-long-arrow-alt-right"></i>${ irr }</li>
+                <li><i class="fas fa-long-arrow-alt-right"></i>${ pp }</li>
+                <li><i class="fas fa-long-arrow-alt-right"></i>${ roi }</li>
+            `;
         } else {
             displayMessage('Benefit and Cost must be positive number!', message2);
         }
@@ -219,5 +240,104 @@ if (document.querySelector('#start-button')) {
                 document.querySelector('#message2-container').style.display = 'none';
             }
         }, 5000);
+    }
+
+    function listValue(listDom) {
+        var listValue = [];
+        for (let i = 0; i < listDom.length; i ++) {
+            listValue.push(Number(listDom[i].value));
+        }
+        return listValue;
+    }
+
+    function findListCashFlow(listBenefit, listCost) {
+        var listCashFlow = [];
+        for (let i = 0; i < listBenefit.length; i ++) {
+            listCashFlow.push(listBenefit[i] - listCost[i]);
+        }
+        return listCashFlow;
+    }
+
+    function totalCashFlow(listCashFlow) {
+        var total = 0;
+        listCashFlow.forEach((cashFlow) => {
+            total += cashFlow;
+        })
+        return total;
+    }
+
+    function totalCost(listCost) {
+        var total = 0;
+        listCost.forEach((cost) => {
+            total += cost;
+        })
+        return total;
+    }
+
+    function PV(period, rate, benefit1, cost1) {
+        return `$ ${ (Number(benefit1) - Number(cost1)) / ((1 + rate) ** period) }`;
+    }
+
+    function FW (pv, period, rate) {
+        return `$ ${ pv * ((1 + rate) ** period) }`;
+    }
+
+    function NPV(period, rate, listCashFlow) {
+        var npv = 0;
+        for (let i = 0; i < period; i++) {
+            npv += listCashFlow[i] / ((1 + rate) ** (i + 1));
+        }
+        return `$ ${ npv }`;
+    }
+
+    function NFV(npv, period, rate) {
+        return `$ ${ npv * ((1 + rate) ** period) }`;
+    }
+
+    function IRR(period, rate, listCashFlow) {
+        var valid = 1;
+        var running = true;
+        var lastRate = 0;
+        var npv;
+        var status = '';
+        while (running) {
+            npv = NPV(period, rate, listCashFlow);
+            if (npv < valid && npv > (0 - valid)) {
+                return `${ rate * 100 } %`;
+            } else if (npv < 0) {
+                if (status == 'positive') {
+                    return `${ ((rate + lastRate) * 100) / 2 } %`;
+                }
+                status = 'negative';
+                lastRate = rate;
+                rate -= 0.01;
+            } else if (npv > 0) {
+                if (status == 'negative') {
+                    return `${ ((rate + lastRate) * 100) / 2 } %`;
+                }
+                lastRate = rate;
+                rate += 0.01;
+            }
+            if (rate < 0 || rate > 1) {
+                return 'fail';
+            }
+        }
+    }
+
+    function PP(listCashFlow, listCost, period) {
+        var check = totalCashFlow(listCashFlow) / totalCost(listCost);
+        if (check < 1) {
+            return `more than ${ period } years`;
+        }
+        for (let i = 0; i < period; i ++) {
+            check = totalCashFlow(listCashFlow.slice(0, i + 1)) / totalCost(listCost.slice(0, i + 1));
+            if (check >= 1) {
+                return `${ i + 1 } years`;
+            }
+        }
+    }
+
+    function ROI(listCashFlow, listCost) {
+        return `${ (totalCashFlow(listCashFlow) * 100) / totalCost(listCost) } %`;
     }
 }
