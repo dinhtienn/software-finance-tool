@@ -643,12 +643,15 @@ h3 {
     .sub-frame {
         width: 70vw;
         padding: 10px;
-        padding-left: 30px;
     }
 
     #tutorial {
         padding-bottom: 15px;
         top: 12vh !important;
+    }
+
+    #tutorial .sub-frame {
+        padding-left: 30px;
     }
 
     #tutorial p, #tutorial i {
