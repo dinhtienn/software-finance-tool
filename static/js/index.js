@@ -209,9 +209,9 @@ if (document.querySelector('#start-button')) {
             message = message.concat('Number of period must be positive number smaller than 13!');
         }
         if (isNaN(rate)) {
-            message = message.concat('<br>Rate must be positive number smaller than 100!');
+            message = message.concat('<br><br>Rate must be positive number smaller than 100!');
         } else if (rate <= 0 || rate > 100) {
-            message = message.concat('<br>Rate must be positive number smaller than 100!');
+            message = message.concat('<br><br>Rate must be positive number smaller than 100!');
         }
         if (message == '') {
             return true;
