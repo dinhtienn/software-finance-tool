@@ -9,7 +9,7 @@ def index():
 
 @app.route('/feedback', methods=['POST'])
 def feedback():
-  gmail = GMail('tiennguyendinh.1998@gmail.com','neverhate')
+  gmail = GMail('llovebeatt@gmail.com','L0veI3ea1')
   html_content = request.data.decode("utf-8").split('":"', 1)[1].replace('"}', '')
   msg = Message('Finance Tool Feedback', to='dinhtiennguyen.1202@gmail.com', html=html_content)
   gmail.send(msg)
