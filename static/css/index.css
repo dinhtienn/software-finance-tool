@@ -126,6 +126,7 @@ h1 {
     padding: 10px 20px;
     z-index: 1;
     transition: 0.4s ease-in-out;
+    border: none !important;
 }
 
 #start-button i {
