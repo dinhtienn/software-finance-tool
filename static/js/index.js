@@ -147,14 +147,16 @@ if (document.querySelector('#start-button')) {
             reDisplay(displayComponent);
         }
 
-        document.querySelector('body').onclick = function () {
-            teamInfo.style.opacity = '0';
-            if (window.innerWidth > 768) {
-                teamInfo.style.top = topDesktop2;
-            } else {
-                teamInfo.style.top = topMobile2;
+        document.querySelector('body').onclick = function (point) {
+            if (point.clientY > 80 && teamInfo.style.opacity != '0') {
+                teamInfo.style.opacity = '0';
+                if (window.innerWidth > 768) {
+                    teamInfo.style.top = topDesktop2;
+                } else {
+                    teamInfo.style.top = topMobile2;
+                }
+                reDisplay(displayComponent);
             }
-            reDisplay(displayComponent);
         }
     }
     
@@ -182,14 +184,16 @@ if (document.querySelector('#start-button')) {
             reDisplay(displayComponent);
         }
 
-        document.querySelector('body').onclick = function () {
-            tutorial.style.opacity = '0';
-            if (window.innerWidth > 768) {
-                tutorial.style.top = topDesktop2;
-            } else {
-                tutorial.style.top = topMobile2;
+        document.querySelector('body').onclick = function (point) {
+            if (point.clientY > 80 && tutorial.style.opacity != '0') {
+                tutorial.style.opacity = '0';
+                if (window.innerWidth > 768) {
+                    tutorial.style.top = topDesktop2;
+                } else {
+                    tutorial.style.top = topMobile2;
+                }
+                reDisplay(displayComponent);
             }
-            reDisplay(displayComponent);
         }
     }
 

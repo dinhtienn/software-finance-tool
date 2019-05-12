@@ -8,6 +8,10 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+.mt {
+    margin-top: -15%;
+}
+
 .container {
     margin: 0 auto;
     max-width: 1120px;
@@ -95,12 +99,6 @@ header nav a:hover::before {
     align-items: center;
     margin: 0 15%;
     flex-direction: column;
-}
-
-@media (min-width: 900px) {
-    .between-screen {
-        height: 100%;
-    }
 }
 
 /* Heading */
