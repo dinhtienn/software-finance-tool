@@ -13,10 +13,12 @@ def index():
 
 @app.route('/feedback', methods=['POST'])
 def feedback():
-  # gmail = GMail('tiennguyendinh.1998@gmail.com','neverhate')
-  # html_content = request.data.decode("utf-8").split('":"', 1)[1].replace('"}', '')
-  # msg = Message('Finance Tool Feedback', to='dinhtiennguyen.1202@gmail.com', html=html_content)
-  # gmail.send(msg)
+  # Send Email
+  gmail = GMail('tiennguyendinh.1998@gmail.com','neverhate')
+  html_content = request.data.decode("utf-8").split('":"', 1)[1].replace('"}', '')
+  msg = Message('Finance Tool Feedback', to='dinhtiennguyen.1202@gmail.com', html=html_content)
+  gmail.send(msg)
+  # Saving to Database
   new_feedback = Feedback(content=request.data.decode("utf-8").split('":"', 1)[1].replace('"}', ''))
   new_feedback.save()
   return 'success'
