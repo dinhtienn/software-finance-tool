@@ -146,6 +146,16 @@ if (document.querySelector('#start-button')) {
             }
             reDisplay(displayComponent);
         }
+
+        document.querySelector('body').onclick = function () {
+            teamInfo.style.opacity = '0';
+            if (window.innerWidth > 768) {
+                teamInfo.style.top = topDesktop2;
+            } else {
+                teamInfo.style.top = topMobile2;
+            }
+            reDisplay(displayComponent);
+        }
     }
     
     if (document.querySelector('#tutorial') && document.querySelector('#tut-link')) {
@@ -163,6 +173,16 @@ if (document.querySelector('#start-button')) {
         }
     
         tutLink.onmouseout = function() {
+            tutorial.style.opacity = '0';
+            if (window.innerWidth > 768) {
+                tutorial.style.top = topDesktop2;
+            } else {
+                tutorial.style.top = topMobile2;
+            }
+            reDisplay(displayComponent);
+        }
+
+        document.querySelector('body').onclick = function () {
             tutorial.style.opacity = '0';
             if (window.innerWidth > 768) {
                 tutorial.style.top = topDesktop2;
@@ -336,7 +356,7 @@ if (document.querySelector('#start-button')) {
     function PP(listCashFlow, listCost, period) {
         var check = totalCashFlow(listCashFlow) / totalCost(listCost);
         if (check < 1) {
-            return `more than ${ period }`;
+            return `> ${ period }`;
         }
         for (let i = 0; i < period; i ++) {
             check = totalCashFlow(listCashFlow.slice(0, i + 1)) / totalCost(listCost.slice(0, i + 1));

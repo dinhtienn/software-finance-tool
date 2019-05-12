@@ -631,9 +631,12 @@ table p {
     /* End Input1 */
 
     /* Input2 */
+    table {
+        width: 80vw !important;
+    }
+
     table th {
         font-size: 3vw;
-        width: 70vw !important;
     }
 
     table input {
@@ -648,7 +651,8 @@ table p {
 
     /* Result */
     #result {
-        width: 70vw;
+        width: 80vw;
+        padding: 15px;
     }
 
     #main-result {
@@ -656,7 +660,7 @@ table p {
     }
 
     #result li {
-        font-size: 3.5vw;
+        font-size: 3.2vw;
         margin-bottom: 15px;
     }
 
