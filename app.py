@@ -1,5 +1,5 @@
 from flask import *
-from gmail import *
+# from gmail import *
 from mongoengine import *
 from feedback import Feedback
 import mlab
