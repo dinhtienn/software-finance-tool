@@ -38,7 +38,9 @@ if (document.querySelector('#start-button')) {
                 mainFeedback.style.opacity = '0';
                 thankContainer.style.display = 'block';
                 thankContainer.style.opacity = '1';
-            }).catch(error => { console.log(error) });
+            }).catch(error => {
+                console.log(error);
+            });
         }
     }
 
