@@ -9,7 +9,38 @@ if (document.querySelector('#start-button')) {
     var back2 = document.querySelector('#back2');
     var back3 = document.querySelector('#back3');
     var start = document.querySelector('#back');
+    var okay = document.querySelector('#thank');
+    var feedbackButton = document.querySelector('#feedback-button');
+    var cancelFeedback = document.querySelector('#cancel-feedback');
     var resultValue = document.querySelector('#value');
+    var sendFeedbackButton = document.querySelector('#send-feedback');
+    var feedbackContainer = document.querySelector('#feedback-container');
+
+    sendFeedbackButton.onclick = function () {
+        var feedbackContent = document.querySelector('#feedback-content').value;
+        var mainFeedback = document.querySelector('#main-feedback');
+        var thankContainer = document.querySelector('#thank-container');
+        
+        if (feedbackContent == '') {
+            document.querySelector('#feedback-mess').innerHTML = 'You need to Type!';
+            setTimeout(function() {
+                document.querySelector('#feedback-mess').innerHTML = '';
+            }, 3000);
+        } else  {
+            axios({
+                method: 'POST',
+                url: "/feedback",
+                data: {
+                    "content": feedbackContent,
+                }
+            }).then(() => {
+                mainFeedback.style.display = 'none';
+                mainFeedback.style.opacity = '0';
+                thankContainer.style.display = 'block';
+                thankContainer.style.opacity = '1';
+            }).catch(error => { console.log(error) });
+        }
+    }
 
     var period;
     var rate;
@@ -46,6 +77,18 @@ if (document.querySelector('#start-button')) {
                 listLabel1[i].style.fontSize = '18px';
             }
         }
+    }
+
+    okay.onclick = function() {
+        feedbackContainer.style.opacity = '0';
+        feedbackContainer.style.display = 'none';
+        reDisplay(displayComponent);
+    }
+
+    cancelFeedback.onclick = function() {
+        feedbackContainer.style.opacity = '0';
+        feedbackContainer.style.display = 'none';
+        reDisplay(displayComponent);
     }
 
     startButton.onclick = function() {
@@ -135,6 +178,10 @@ if (document.querySelector('#start-button')) {
                 teamInfo.style.top = topMobile1;
             }
             unDisplay(listComponent);
+            if (feedbackContainer.style.opacity != '0') {
+                feedbackContainer.style.opacity = '0';
+                feedbackContainer.style.display = 'none';
+            }
         }
     
         infoLink.onmouseout = function() {
@@ -164,6 +211,10 @@ if (document.querySelector('#start-button')) {
                     teamInfo.style.top = topMobile1;
                 }
                 unDisplay(listComponent);
+                if (feedbackContainer.style.opacity != '0') {
+                    feedbackContainer.style.opacity = '0';
+                    feedbackContainer.style.display = 'none';
+                }
             }
         }
     }
@@ -180,6 +231,10 @@ if (document.querySelector('#start-button')) {
                 tutorial.style.top = topMobile1;
             }
             unDisplay(listComponent);
+            if (feedbackContainer.style.opacity != '0') {
+                feedbackContainer.style.opacity = '0';
+                feedbackContainer.style.display = 'none';
+            }
         }
     
         tutLink.onmouseout = function() {
@@ -209,7 +264,19 @@ if (document.querySelector('#start-button')) {
                     tutorial.style.top = topMobile1;
                 }
                 unDisplay(listComponent);
+                if (feedbackContainer.style.opacity != '0') {
+                    feedbackContainer.style.opacity = '0';
+                    feedbackContainer.style.display = 'none';
+                }
             }
+        }
+    }
+
+    feedbackButton.onclick = function () {
+        if (feedbackContainer.style.opacity != '1') {
+            feedbackContainer.style.opacity = '1';
+            feedbackContainer.style.display = 'flex';
+            unDisplay(listComponent);
         }
     }
 
