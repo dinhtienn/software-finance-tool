@@ -22,5 +22,5 @@ gunicorn
 addict
 shortuuid
 
-gmail
+# gmail
 mlab

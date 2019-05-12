@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto Mono', monospace;
 }
 
 .mt {
@@ -123,7 +123,7 @@ h1 {
     color: #2c3e50;
     background: rgba(255, 255, 255, 0.6);
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
-    padding: 10px 20px;
+    padding: 20px;
     z-index: 1;
     transition: 0.4s ease-in-out;
     border: none !important;
@@ -170,7 +170,7 @@ h1 {
 .button-submit {
     font-size: 17px;
     background: transparent;
-    border: #2c3e50 solid 1px;
+    border: #2c3e50 solid 2px;
     padding: 8px 15px;
     transition: 0.3s ease-in-out;
     margin-right: 20px;
@@ -218,6 +218,7 @@ h1 {
     left: 0;
     transition: 0.4s ease-in-out;
     pointer-events: none;
+    font-weight: bold;
 }
 
 #input1 input:focus ~ label {
@@ -276,7 +277,7 @@ td input {
 th {
     font-size: 16px;
     color: #2c3e50;
-    font-weight: lighter;
+    font-weight: bold;
     padding: 10px 0;
     text-align: center;
 }
@@ -366,16 +367,20 @@ table p {
 /* Tutorial */
 .frame {
     position: fixed;
-    width: 30vw;
-    background: rgba(255, 255, 255, 0.6);
-    left: 35vw;
+    width: 100%;
     top: 30vh;
-    padding: 50px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    color: #7f8c8d;
     opacity: 0;
-    font-size: 20px;
     transition: 0.5s ease-in-out;
+    display: flex;
+    justify-content: center;
+}
+
+.sub-frame {
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    font-size: 20px;
+    width: 30vw;
 }
 
 #tutorial {
@@ -391,9 +396,10 @@ table p {
 }
 
 #tutorial ul li {
-    font-size: 14px;
+    font-size: 16px;
     color: #2c3e50;
     margin-bottom: 5px;
+    font-weight: bold;
 }
 /* End Tutorial */
 
@@ -406,11 +412,20 @@ table p {
 #information p:first-child {
     font-size: 30px;
     color: #2c3e50;
+    font-weight: 100;
 }
 
-#information div {
-    padding-top: 5px;
-    padding-left: 20%;
+#information p:nth-child(2), #information p:nth-child(3) {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+#information p:last-child {
+    margin-bottom: 25px;
+}
+
+#information ul {
+    text-align: center;
 }
 
 #information li {
@@ -418,15 +433,12 @@ table p {
     font-size: 18px;
     margin-bottom: 5px;
     color: #34495e;
+    font-weight: bold;
 }
 
 #information i {
     margin-right: 8px;
     color: #2c3e50;
-}
-
-#information p:first-child i {
-    font-size: 25px;
 }
 
 #information p:last-child i {
@@ -515,7 +527,7 @@ table p {
 }
 
 h2 {
-    color: #7f8c8d;
+    color: #353b48;
     font-size: 1.4vw;
 }
 
@@ -564,16 +576,8 @@ h3 {
 /* End Components */
 
 /* Fonts */
-.f-sofia {
-    font-family: 'Sofia', cursive;
-}
-
 .f-roboto {
     font-family: 'Roboto Mono', monospace;
-}
-
-.f-montserrat {
-    font-family: 'Montserrat', sans-serif;
 }
 
 @font-face {
@@ -633,10 +637,13 @@ h3 {
 
     /* Tutorial */
     .frame {
-        width: 60vw;
-        left: 13vw;
         top: 20vh;
-        padding: 30px;
+    }
+
+    .sub-frame {
+        width: 70vw;
+        padding: 10px;
+        padding-left: 30px;
     }
 
     #tutorial {
