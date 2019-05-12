@@ -99,15 +99,16 @@ if (document.querySelector('#start-button')) {
             var irr = IRR(period, rate, listCashFlow);
             var pp = PP(listCashFlow, listCost, period);
             var roi = ROI(listCashFlow, listCost);
+            
             displayComponent = display(result, listComponent, 'flex');
             resultValue.innerHTML = `
-                <li><i class="fas fa-long-arrow-alt-right"></i>${ pv }</li>
-                <li><i class="fas fa-long-arrow-alt-right"></i>${ fw }</li>
-                <li><i class="fas fa-long-arrow-alt-right"></i>${ npv }</li>
-                <li><i class="fas fa-long-arrow-alt-right"></i>${ nfv }</li>
-                <li><i class="fas fa-long-arrow-alt-right"></i>${ irr }</li>
-                <li><i class="fas fa-long-arrow-alt-right"></i>${ pp }</li>
-                <li><i class="fas fa-long-arrow-alt-right"></i>${ roi }</li>
+                <li><i class="fas fa-long-arrow-alt-right"></i>$ ${ pv }</li>
+                <li><i class="fas fa-long-arrow-alt-right"></i>$ ${ fw }</li>
+                <li><i class="fas fa-long-arrow-alt-right"></i>$ ${ npv }</li>
+                <li><i class="fas fa-long-arrow-alt-right"></i>$ ${ nfv }</li>
+                <li><i class="fas fa-long-arrow-alt-right"></i>${ irr } %</li>
+                <li><i class="fas fa-long-arrow-alt-right"></i>${ pp } years</li>
+                <li><i class="fas fa-long-arrow-alt-right"></i>${ roi } %</li>
             `;
         } else {
             displayMessage('Benefit and Cost must be positive number!', message2);
@@ -274,12 +275,19 @@ if (document.querySelector('#start-button')) {
         return total;
     }
 
+    function roundNumber(number) {
+        return Math.floor(number * 100) / 100;
+    }
+
     function PV(period, rate, benefit1, cost1) {
-        return `$ ${ (Number(benefit1) - Number(cost1)) / ((1 + rate) ** period) }`;
+        var pv = ((Number(benefit1) - Number(cost1)) / ((1 + rate) ** period));
+        if (pv < 0) pv = 0 - pv;
+        return roundNumber(pv);
     }
 
     function FW (pv, period, rate) {
-        return `$ ${ pv * ((1 + rate) ** period) }`;
+        var fw = pv * ((1 + rate) ** period);
+        return roundNumber(fw);
     }
 
     function NPV(period, rate, listCashFlow) {
@@ -287,11 +295,12 @@ if (document.querySelector('#start-button')) {
         for (let i = 0; i < period; i++) {
             npv += listCashFlow[i] / ((1 + rate) ** (i + 1));
         }
-        return `$ ${ npv }`;
+        return roundNumber(npv);
     }
 
     function NFV(npv, period, rate) {
-        return `$ ${ npv * ((1 + rate) ** period) }`;
+        var nfv = npv * ((1 + rate) ** period)
+        return roundNumber(nfv);
     }
 
     function IRR(period, rate, listCashFlow) {
@@ -303,23 +312,23 @@ if (document.querySelector('#start-button')) {
         while (running) {
             npv = NPV(period, rate, listCashFlow);
             if (npv < valid && npv > (0 - valid)) {
-                return `${ rate * 100 } %`;
+                return roundNumber(rate * 100);
             } else if (npv < 0) {
                 if (status == 'positive') {
-                    return `${ ((rate + lastRate) * 100) / 2 } %`;
+                    return roundNumber(((rate + lastRate) * 100) / 2);
                 }
                 status = 'negative';
                 lastRate = rate;
                 rate -= 0.01;
             } else if (npv > 0) {
                 if (status == 'negative') {
-                    return `${ ((rate + lastRate) * 100) / 2 } %`;
+                    return roundNumber(((rate + lastRate) * 100) / 2);
                 }
                 lastRate = rate;
                 rate += 0.01;
             }
             if (rate < 0 || rate > 1) {
-                return 'fail';
+                return '?';
             }
         }
     }
@@ -327,17 +336,18 @@ if (document.querySelector('#start-button')) {
     function PP(listCashFlow, listCost, period) {
         var check = totalCashFlow(listCashFlow) / totalCost(listCost);
         if (check < 1) {
-            return `more than ${ period } years`;
+            return `more than ${ period }`;
         }
         for (let i = 0; i < period; i ++) {
             check = totalCashFlow(listCashFlow.slice(0, i + 1)) / totalCost(listCost.slice(0, i + 1));
             if (check >= 1) {
-                return `${ i + 1 } years`;
+                return i + 1;
             }
         }
     }
 
     function ROI(listCashFlow, listCost) {
-        return `${ (totalCashFlow(listCashFlow) * 100) / totalCost(listCost) } %`;
+        var roi = (totalCashFlow(listCashFlow) * 100) / totalCost(listCost);
+        return roundNumber(roi);
     }
 }

@@ -160,6 +160,7 @@ h1 {
     padding: 40px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     transition: 0.4s ease-in-out;
+    min-width: 550px;
 }
 
 .button-submit {
@@ -327,7 +328,7 @@ table p {
 #main-result {
     display: flex;
     justify-content: space-between;
-    width: 25vw;
+    width: 100%;
 }
 
 #result li {
@@ -343,7 +344,7 @@ table p {
 
 #value i {
     position: absolute;
-    left: -3vw;
+    left: -7vw;
     top: 3px;
 }
 
