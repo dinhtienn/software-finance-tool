@@ -17,8 +17,7 @@ def feedback():
   # html_content = request.data.decode("utf-8").split('":"', 1)[1].replace('"}', '')
   # msg = Message('Finance Tool Feedback', to='dinhtiennguyen.1202@gmail.com', html=html_content)
   # gmail.send(msg)
-  # new_feedback = Feedback(content=request.data.decode("utf-8").split('":"', 1)[1].replace('"}', ''))
-  new_feedback = Feedback(content='abc')
+  new_feedback = Feedback(content=request.data.decode("utf-8").split('":"', 1)[1].replace('"}', ''))
   new_feedback.save()
   return 'success'
 
