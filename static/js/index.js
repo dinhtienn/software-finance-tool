@@ -147,13 +147,13 @@ if (document.querySelector('#start-button')) {
             
             displayComponent = display(result, listComponent, 'flex');
             resultValue.innerHTML = `
-                <li><i class="fas fa-long-arrow-alt-right"></i>$ ${ pv }</li>
-                <li><i class="fas fa-long-arrow-alt-right"></i>$ ${ fw }</li>
-                <li><i class="fas fa-long-arrow-alt-right"></i>$ ${ npv }</li>
-                <li><i class="fas fa-long-arrow-alt-right"></i>$ ${ nfv }</li>
-                <li><i class="fas fa-long-arrow-alt-right"></i>${ irr } %</li>
-                <li><i class="fas fa-long-arrow-alt-right"></i>${ pp } years</li>
-                <li><i class="fas fa-long-arrow-alt-right"></i>${ roi } %</li>
+                <li><i class="fas fa-long-arrow-alt-right"></i>$${ pv }</li>
+                <li><i class="fas fa-long-arrow-alt-right"></i>$${ fw }</li>
+                <li><i class="fas fa-long-arrow-alt-right"></i>$${ npv }</li>
+                <li><i class="fas fa-long-arrow-alt-right"></i>$${ nfv }</li>
+                <li><i class="fas fa-long-arrow-alt-right"></i>${ irr }%</li>
+                <li><i class="fas fa-long-arrow-alt-right"></i>${ pp }years</li>
+                <li><i class="fas fa-long-arrow-alt-right"></i>${ roi }%</li>
             `;
         } else {
             displayMessage('Benefit and Cost must be positive number!', message2);
