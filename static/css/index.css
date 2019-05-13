@@ -121,7 +121,7 @@ h1 {
 #start-button {
     font-size: 30px;
     color: #2c3e50;
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.8);
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
     padding: 20px;
     z-index: 1;
@@ -161,7 +161,7 @@ h1 {
 /* Input1 */
 .main-content {
     width: 30vw;
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.8);
     padding: 40px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     transition: 0.4s ease-in-out;
@@ -376,7 +376,7 @@ table p {
 }
 
 .sub-frame {
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.8);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     padding: 40px;
     font-size: 20px;
@@ -669,6 +669,10 @@ h3 {
     /* End Tutorial */
 
     /* Information */
+    #information .sub-frame {
+        padding: 20px;
+    }
+
     #information p {
         margin-bottom: 10px;
         font-size: 3vw;
@@ -676,10 +680,6 @@ h3 {
 
     #information p:first-child {
         font-size: 4vw;
-    }
-
-    #information div {
-        padding-left: 10%;
     }
 
     #information li {
@@ -748,7 +748,7 @@ h3 {
     }
 
     #result li {
-        font-size: 3.2vw;
+        font-size: 3vw;
         margin-bottom: 15px;
     }
 
